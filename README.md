@@ -1,35 +1,27 @@
-# 🔌 Plug-Tune: 전기차를 위한 능동형 도킹 인터페이스 튜닝
+## 🔌 Plug-Tune: 전기차를 위한 능동형 도킹 인터페이스 튜닝
 #### 인프라 중심 기술의 한계를 넘는 차량 중심 V2I 협력 모델 제안
 
-<br/>
-
-## 🎉 Achievement
+### 🎉 Achievement
 
 - 제1회 튜닝 아이디어 경진대회 **일반부 본선** 진출
 
 - **미래차 전환시대 튜닝 혁신 포럼** 본선 **무대 발표작**
 
-## 🚨 Background (문제 의식)
+### 🚨 Background 
 전기차 보급률은 급증하고 있으나, 충전은 여전히 사용자에게 번거로운 노동(불편함 응답률 73%)으로 남아 있습니다. 자율 충전 로봇이 상용화를 시도 중이지만, 로봇의 **비전(Vision) 센서에만 전적으로 의존하는 기존 방식은 지하 주차장의 낮은 조도, 센서 오염, 비정형 주차 환경에서 심각한 인식률 저하와 도킹 실패**를 겪고 있습니다.
-<br/>
 
 ![페인 포인트](images/image2.png)
 ![현행 기술의 한계](images/image3.png)
 
-
-## 💡 Solution
+### 💡 Solution
 #### 로봇을 비싸게 만드는 대신, 차량을 로봇이 일하기 편하게 가이드하는 '수동적 타겟'에서 '능동적 파트너'로 변모시키는 튜닝을 제안합니다.
 ![제안 컨셉](images/image4.png)
 
-<br/>
-
-## 🧩 System Architecture
-본 프로젝트는 세 개의 노드(차량, 서버, 로봇)를 하나의 임베디드 계층으로 묶어 지연 없는 협력 통신을 구현합니다.
+### 🧩 System Architecture
+본 프로젝트는 **세 개의 노드(차량, 서버, 로봇)를 하나의 임베디드 계층으로** 묶어 지연 없는 협력 통신을 구현합니다.
 ![시스템 아키텍처](images/image10.png)
 
-<br/>
-
-## 🛠️ Hardware Tuning (차량 측 하드웨어)
+### 🛠️ Hardware Tuning (차량 측 하드웨어)
 1. **스마트 서보 액추에이터 및 인입 모듈**: 로봇 플러그가 30cm 이내 접근 시, 자석처럼 강제로 끌어당겨 완벽히 결합시키는 능동 인입(Active In-take) 기구부.
 
 2. **정밀 UWB 비컨**: GPS 음영 지역에서도 mm 단위의 정밀한 3차원 위치 좌표를 능동 송신.
@@ -39,7 +31,7 @@
 ![하드웨어 튜닝](images/image5.png)
 
 
-## 👩‍💻 Software Sync & Control Layer (차량 및 로봇 측 소프트웨어 제어)
+### 👩‍💻 Software Sync & Control Layer (차량 및 로봇 측 소프트웨어 제어)
 1. **Auto-Trigger & MQTT Sync**: 주차 완료 시 차량 배터리(SoC)를 분석해 로봇을 자동 호출하며, MQTT 프로토콜로 3자(서버-차량-로봇) 간 상태 지연 없이 동기화.
 
 2. **Active Feedback (실시간 보정)**: 로봇 접근 궤적의 오차 발생 시 차량이 보정 좌표를 역송신.
@@ -49,9 +41,7 @@
 ![소프트웨어 튜닝 1](images/image6.png)
 ![소프트웨어 튜닝 2](images/image7.png)
 
-<br/>
-
-## 🛡️ Failsafe & Reliability (안전 설계)
+### 🛡️ Failsafe & Reliability 
 시스템의 무결성을 보장하기 위해 엣지 케이스(Edge Case)에 대한 철저한 방어 로직을 구축했습니다.
 
 - **Communication Loss**: 통신 단절(Heartbeat 누락) 시 즉각 충전 프로세스 중단 및 포트 폐쇄.
@@ -63,10 +53,10 @@
 ![엣지케이스 설계](images/image9.png)
 
 
-## 💻 Simulation & Validation (디지털 트윈 검증)
+### 💻 Simulation & Validation 
 물리적 개조 전, 하드웨어 통신과 동일한 환경을 구축하여 제어 알고리즘의 무결성을 검증했습니다.
 
-- 환경: Unity 3D 및 C# 스크립트 기반 디지털 트윈 구축 (ROS2 통신 개념 차용).
+- 환경: Unity 3D 및 C# 스크립트 기반 **디지털 트윈** 구축 (ROS2 통신 개념 차용).
 
 - 검증 시나리오:
 
@@ -79,9 +69,7 @@
 ![유니티 검증 1](images/close_view.gif)
 ![유니티 검증 2](images/bird_eye_view.gif)
 
-<br/>
-
-## 🚀 Impact (파급 효과)
+### 🚀 Impact 
 - **1:N 인프라 관리**: 로봇 1대가 수십 대의 차량을 순차 관리하여 국가/지자체의 주차장 인프라 구축 예산 및 공간 절약.
 
 - **교통약자 배려**: 신체적 제약이 있는 운전자의 완벽한 충전 기본권 보장 (Zero-Touch).
@@ -90,8 +78,7 @@
 
 ![파급 효과](images/image13.png)
 
-
-## ⚙️ Tech Stack
+### ⚙️ Tech Stack
 - Simulation: `Unity 3D`
 
 - Language/Logic: `C#` (State Machine Design)
